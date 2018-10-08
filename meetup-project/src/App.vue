@@ -1,42 +1,60 @@
 <template>
   <v-app>
     <v-toolbar>
-       <v-toolbar-side-icon @click="sideNav = !sideNav"></v-toolbar-side-icon>
+      <v-toolbar-side-icon 
+        @click="sideNav = !sideNav" 
+        class="hidden-sm-and-up">
+      </v-toolbar-side-icon>
       <v-toolbar-title>
-        Dev meetup
+          <router-link 
+          to="/" 
+          tag="span" 
+          style="cursor: pointer"
+          > Dev meetup</router-link> 
       </v-toolbar-title>
       <v-spacer></v-spacer>
-      <v-toolbar-items>
-        <v-btn flat>
+      <v-toolbar-items class="hidden-xs-only">
+        <v-btn flat 
+          v-for="item in menuItems" 
+          :key="item.menuItems"
+          router
+          :to="item.link">
           <v-icon left>
-            supervisor_account
+            {{item.icon}}
           </v-icon>
-          View meetups
+          {{item.title}}
           </v-btn>
       </v-toolbar-items>
     </v-toolbar>
+    <main>
+      <router-view>
+        
+      </router-view>
+    </main>
 
     <v-navigation-drawer 
       v-model="sideNav" 
       width=250 
       temporary
+      absolute
     >
       <v-list>
-      <v-list-tile @click="sideNav = !sideNav">
+      <v-list-tile 
+        v-for="item in menuItems" 
+        :key="item.title"
+        router
+        :to="item.link"
+        >
         <v-list-tile-action>
-          <v-icon>supervisor_account</v-icon>
+          <v-icon>{{item.icon}}</v-icon>
         </v-list-tile-action>
-
         <v-list-tile-content>
-          <v-list-tile-title>Dev meetup</v-list-tile-title>
+          <v-list-tile-title>{{item.title}}</v-list-tile-title>
         </v-list-tile-content>
       </v-list-tile>
     </v-list>
       
     </v-navigation-drawer>
-    <main>
-      
-    </main>
   </v-app>
 </template>
 
@@ -45,6 +63,34 @@ export default {
   data () {
     return {
       sideNav: false,
+      menuItems: [
+        {
+          icon: 'supervisor_account', 
+          title: 'View meetups',
+          link: '/meetups'
+        },
+        {
+          icon: 'room', 
+          title: 'Orginize meetup',
+          link: '/createmeetup'
+        },
+        {
+          icon: 'person', 
+          title: 'Profile',
+          link: '/profile'
+        },
+        {
+          icon: 'face', 
+          title: 'Sign in',
+          link: '/signin'
+        },
+        {
+          icon: 'face', 
+          title: 'Sign up',
+          link: '/signup'
+        },
+
+      ]
     }
   },
   name: 'App'
