@@ -9,6 +9,11 @@
                     "settings": {
                         "foreground": "#09dc96"
                     }
+                },
+                {
+                    "settings": {
+                        "foreground": "#09dc96"
+                    }
                 }
             ]
     },

@@ -53,7 +53,6 @@
         </v-list-tile-content>
       </v-list-tile>
     </v-list>
-      
     </v-navigation-drawer>
   </v-app>
 </template>
