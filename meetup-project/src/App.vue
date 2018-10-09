@@ -17,7 +17,6 @@
         <v-btn flat 
           v-for="item in menuItems" 
           :key="item.menuItems"
-          router
           :to="item.link">
           <v-icon left>
             {{item.icon}}
@@ -42,7 +41,6 @@
       <v-list-tile 
         v-for="item in menuItems" 
         :key="item.title"
-        router
         :to="item.link"
         >
         <v-list-tile-action>
