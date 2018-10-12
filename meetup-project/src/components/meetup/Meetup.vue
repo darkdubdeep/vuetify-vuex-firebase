@@ -1,5 +1,5 @@
 <template>
-  <v-contaner>
+  <v-container>
     <v-layout row wrap>
         <v-flex xs12>
             <v-card>
@@ -19,7 +19,7 @@
                           </v-img>
                           <v-card-title>
                         <div>
-                          <span class="grey--text">{{meetup.date}}/span><br>
+                          <span class="grey--text">{{meetup.date}}</span><br>
                         </div>
                         </v-card-title>
                         <v-card-actions>
@@ -33,7 +33,7 @@
             </v-card>
         </v-flex>
     </v-layout>
-  </v-contaner>   
+  </v-container>   
 </template>
 
 <script>
@@ -41,7 +41,7 @@ export default {
   props: ["id"],
   computed: {
     meetup() {
-      return this.$state.getters.loadedMeetup();
+      return this.$store.getters.loadedMeetup(this.id);
     }
   }
 };
