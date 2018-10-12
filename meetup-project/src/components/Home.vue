@@ -15,6 +15,7 @@
             v-for="(item) in meetups"
             :key="item.id"
             :src="item.imageUrl"
+            @click="onLoadMeetup(item.id)"
             >
             <div class="title">
                 {{item.title}}
@@ -28,32 +29,26 @@
 
 <script>
 export default {
-    data() {
-        return {
-            meetups: [
-                {
-                    imageUrl: 'https://get.wallhere.com/photo/new-york-Empire-State-Building-Manhattan-1059865.jpg', 
-                    id: 'efwewfeewfwfe',
-                    title: 'Meetup in NY'
-                },
-                {
-                    imageUrl: 'http://wallsdesk.com/wp-content/uploads/2017/01/Stockholm-Desktop.jpg', 
-                    id: 'asdasdads',
-                    title: 'Meetup in Stockholm'
-                },
-            ]
-        }
+  computed: {
+    meetups() {
+      return this.$store.getters.featuredMeetups;
     }
-}
+  },
+  methods: {
+    onLoadMeetup: function(id) {
+      this.$router.push("/meetups/" + id);
+    }
+  }
+};
 </script>
 
 <style scoped>
-    div.title {
-        position: absolute;
-        bottom: 50px;
-        color: white;
-        padding-left:25px;
-    }
+div.title {
+  position: absolute;
+  bottom: 50px;
+  color: white;
+  padding-left: 25px;
+}
 </style>
 
 

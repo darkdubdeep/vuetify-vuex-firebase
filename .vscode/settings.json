@@ -1,4 +1,5 @@
 {
+    "editor.formatOnSave": true,
     "workbench.colorCustomizations": {
         "editor.background": "#262626",
     },
