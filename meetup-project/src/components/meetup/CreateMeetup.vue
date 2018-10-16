@@ -56,6 +56,26 @@
             </v-flex>
           </v-layout>
           <v-layout row>
+            <v-flex xs12 sm6>
+              <h4>Choose a date</h4>
+               <v-date-picker 
+                  v-model="date"
+                  color="green lighten-1" 
+                  header-color="primary"
+               ></v-date-picker>
+               <p>{{date}}</p>
+            </v-flex>
+            <v-flex xs12 sm6>
+              <h4>Choose time</h4>
+               <v-time-picker 
+                  v-model="time" 
+                  color="green lighten-1" 
+                  header-color="primary"
+               ></v-time-picker>
+               <p>{{time}}</p>
+            </v-flex>
+          </v-layout>
+          <v-layout row>
             <v-flex xs12 sm6 offset-sm3>
               <v-btn
                 class="primary"
@@ -80,7 +100,9 @@ export default {
       titleRules: [
         v => !!v || "Title is required",
         v => v.length > 10 || "Title must be less than 10 characters"
-      ]
+      ],
+      date: null,
+      time: null
     };
   },
   computed: {
