@@ -69,6 +69,7 @@
               <h4>Choose time</h4>
                <v-time-picker 
                   v-model="time" 
+                  format = "24hr"
                   color="green lighten-1" 
                   header-color="primary"
                ></v-time-picker>
@@ -113,6 +114,19 @@ export default {
         this.imageUrl !== "" &&
         this.description !== ""
       );
+    },
+    submitableDatetime() {
+      const date = new Date(this.date);
+      if (typeof this.time === "string") {
+        let hours = this.time.match(/^(\d+)/)[1];
+        const minutes = this.time.match(/:(\d+)/)[1];
+        date.setHours(hours);
+        date.setMinutes(minutes);
+      } else {
+        date.setHours(this.time.getHours());
+        date.setMinutes(this.time.getMinutes());
+      }
+      return date;
     }
   },
   methods: {
