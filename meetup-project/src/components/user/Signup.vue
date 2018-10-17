@@ -30,7 +30,14 @@
                     type="password"
                     >
                     </v-text-field>
-                    <v-btn type="submit">Sign Up</v-btn>
+                    <v-btn type="submit" :disabled="loading" :loading="loading">
+                      <span 
+                        slot="loader" 
+                        class="custom-loader">
+                        <v-icon light>cached</v-icon>
+                        </span>
+                      Sign Up
+                      </v-btn>
                 </form>
             </v-flex>
         </v-layout>
@@ -57,6 +64,9 @@ export default {
     },
     error() {
       return this.$store.getters.error;
+    },
+    loading() {
+      return this.$store.getters.loading;
     }
   },
   watch: {
@@ -80,3 +90,7 @@ export default {
   }
 };
 </script>
+
+<style>
+</style>
+

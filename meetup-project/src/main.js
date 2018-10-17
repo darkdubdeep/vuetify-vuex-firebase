@@ -30,5 +30,6 @@ new Vue({
       projectId: "devmeetup-50a11",
       storageBucket: ""
     });
+    this.$store.dispatch("loadMeetups");
   }
 });

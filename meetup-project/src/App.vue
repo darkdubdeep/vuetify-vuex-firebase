@@ -75,7 +75,11 @@ export default {
             title: "View Meetups",
             link: "/meetups"
           },
-          { icon: "room", title: "Organize Meetup", link: "/meetup/new" },
+          {
+            icon: "room",
+            title: "Organize Meetup",
+            link: "/createmeetup"
+          },
           { icon: "person", title: "Profile", link: "/profile" }
         ];
       }
