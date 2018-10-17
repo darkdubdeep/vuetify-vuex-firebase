@@ -8,9 +8,11 @@ import Vuetify from "vuetify";
 import "vuetify/dist/vuetify.min.css";
 import DateFilter from "./filters/date";
 import * as firebase from "firebase";
+import alertCmp from "./components/shared/Alert.vue";
 
 Vue.use(Vuetify);
 Vue.filter("date", DateFilter);
+Vue.component("app-alert", alertCmp);
 
 Vue.config.productionTip = false;
 /* eslint-disable no-new */

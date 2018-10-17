@@ -1,5 +1,8 @@
 <template>
     <v-container>
+      <div v-if="error"> 
+        <app-alert @dismissed="onDismissed" :text="error.message"></app-alert>
+      </div>
         <v-layout>
             <v-flex xs12 sm6 offset-sm3>
                 <form @submit.prevent="onSignup">
@@ -51,6 +54,9 @@ export default {
     },
     user() {
       return this.$store.getters.user;
+    },
+    error() {
+      return this.$store.getters.error;
     }
   },
   watch: {
@@ -66,6 +72,10 @@ export default {
         email: this.email,
         password: this.password
       });
+    },
+    onDismissed() {
+      console.log("dissmissed");
+      this.$store.dispatch("clearError");
     }
   }
 };
