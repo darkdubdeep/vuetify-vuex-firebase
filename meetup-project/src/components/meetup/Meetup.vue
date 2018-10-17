@@ -19,7 +19,8 @@
                           </v-img>
                           <v-card-title>
                         <div>
-                          <span class="grey--text">{{meetup.date}}</span><br>
+                          <span class="grey--text">{{meetup.date | date}}</span><br>
+                           <div>{{meetup.time}}</div>
                         </div>
                         </v-card-title>
                         <v-card-actions>

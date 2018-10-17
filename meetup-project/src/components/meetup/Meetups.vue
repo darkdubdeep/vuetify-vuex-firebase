@@ -17,6 +17,7 @@
                                   <v-flex xs12 align-end flexbox>
                                       <span class="headline">{{meetup.title}}</span>
                                       <div>{{meetup.date}}</div>
+                                      <div>{{meetup.time}}</div>
                                         </v-flex>
                                         </v-layout>
                                         </v-container>
