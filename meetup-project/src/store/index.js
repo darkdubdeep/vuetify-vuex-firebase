@@ -49,7 +49,8 @@ export const store = new Vuex.Store({
               title: obj[key].title,
               description: obj[key].description,
               imageUrl: obj[key].imageUrl,
-              date: obj[key].date
+              date: obj[key].date,
+              crearorId: obj[key].crearorId
             });
           }
           commit("setLoading", false);
@@ -60,14 +61,15 @@ export const store = new Vuex.Store({
           commit("setLoading", false);
         });
     },
-    createMeetup({ commit }, payload) {
+    createMeetup({ commit, getters }, payload) {
       const meetup = {
         tilte: payload.title,
         location: payload.location,
         imageUrl: payload.imageUrl,
         description: payload.description,
         date: payload.date,
-        time: payload.time
+        time: payload.time,
+        crearorId: getters.user.id
       };
       firebase
         .database()
@@ -84,7 +86,6 @@ export const store = new Vuex.Store({
         .catch(error => {
           console.log(error);
         });
-      commit("createMeetup", meetup);
     },
     signUserUp({ commit }, payload) {
       commit("setLoading", true);
@@ -125,6 +126,16 @@ export const store = new Vuex.Store({
           commit("setError", error);
           console.log(error);
         });
+    },
+    autoSignIn({ commit }, payload) {
+      commit("setUser", { id: payload.uid, registeredMeetup: [] });
+    },
+    logOut({ commit }) {
+      firebase.auth().signOut();
+      commit("setUser", null);
+    },
+    clearError({ commit }) {
+      commit("clearError");
     }
   },
   getters: {

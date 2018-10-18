@@ -30,6 +30,11 @@ new Vue({
       projectId: "devmeetup-50a11",
       storageBucket: ""
     });
+    firebase.auth().onAuthStateChanged(user => {
+      if (user) {
+        this.$store.dispatch("autoSignIn", user);
+      }
+    });
     this.$store.dispatch("loadMeetups");
   }
 });
