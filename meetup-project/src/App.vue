@@ -10,7 +10,7 @@
           to="/" 
           tag="span" 
           style="cursor: pointer"
-          > Umeet</router-link> 
+          > UmeetPro</router-link> 
       </v-toolbar-title>
       <v-spacer></v-spacer>
       <v-toolbar-items class="hidden-xs-only">
@@ -82,7 +82,7 @@ export default {
   computed: {
     menuItems() {
       let menuItems = [
-        { icon: "face", title: "Sign up", link: "/signup" },
+        { icon: "add_circle_outline", title: "Sign up", link: "/signup" },
         { icon: "lock_open", title: "Sign in", link: "/signin" }
       ];
       if (this.userIsAuthenticated) {

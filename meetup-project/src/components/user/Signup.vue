@@ -5,15 +5,24 @@
       </div>
         <v-layout>
             <v-flex xs12 sm6 offset-sm3>
+              <v-card>
+              <v-card-text>
+            <v-container>
                 <form @submit.prevent="onSignup">
+                  <v-layout row>
+                  <v-flex xs12>
                     <v-text-field
                     name="email"
-                    label="mail"
+                    label="Mail"
                     id="email"
                     v-model="email"
                     type="email"
                     >
                     </v-text-field>
+                     </v-flex>
+                </v-layout>
+                <v-layout row>
+                  <v-flex xs12>
                     <v-text-field
                     name="password"
                     label="Password"
@@ -22,6 +31,10 @@
                     type="password"
                     >
                     </v-text-field>
+                     </v-flex>
+                </v-layout>
+                <v-layout row>
+                  <v-flex xs12>
                      <v-text-field
                     name="confirmPassword"
                     label="Confirm Password"
@@ -30,6 +43,8 @@
                     type="password"
                     >
                     </v-text-field>
+                     </v-flex>
+                </v-layout>
                     <v-btn type="submit" :disabled="loading" :loading="loading">
                       <span 
                         slot="loader" 
@@ -39,6 +54,9 @@
                       Sign Up
                       </v-btn>
                 </form>
+                </v-container>
+          </v-card-text>
+          </v-card>
             </v-flex>
         </v-layout>
     </v-container>
@@ -91,6 +109,28 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
+.v-card {
+  margin-top: 70px;
+}
+.v-card label {
+  color: #003366 !important;
+  font-weight: 300;
+}
+.v-card input {
+  color: #003366 !important;
+}
+.v-card .v-btn {
+  width: 100px;
+  margin: 10px 0 0 0;
+  color: #fff;
+  background-color: #3399ff !important;
+}
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  transition: background-color 5000s ease-in-out 0s;
+}
 </style>
 

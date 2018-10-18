@@ -72,3 +72,22 @@ export default {
   }
 };
 </script>
+
+<style scoped>
+.v-card {
+  margin-top: 70px;
+}
+.v-card label {
+  color: #003366 !important;
+  font-weight: 300;
+}
+.v-card input {
+  color: #003366 !important;
+}
+.v-card .v-btn {
+  width: 100px;
+  margin: 10px 0 0 0;
+  color: #fff;
+  background-color: #3399ff !important;
+}
+</style>

@@ -1,13 +1,5 @@
 <template>
   <v-container>
-      <!-- <v-layout row wrap>
-        <v-flex xs12 sm6 class="text-xs-center text-sm-center">
-          <v-btn large router to="/meetups">Explore Meetups</v-btn>
-        </v-flex>
-        <v-flex xs12 sm6 class="text-xs-center text-sm-center"> 
-          <v-btn large router to="/createmeetup">Organize Meetups</v-btn>
-        </v-flex>
-      </v-layout> -->
       <v-layout>
         <v-flex xs12 class="text-xs-center">
           <v-progress-circular
