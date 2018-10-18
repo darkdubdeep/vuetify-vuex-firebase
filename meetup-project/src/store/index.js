@@ -33,11 +33,13 @@ export const store = new Vuex.Store({
     }
   },
   actions: {
-    loadMeetups({ commit }) {
+    loadMeetups({ commit, getters }) {
       commit("setLoading", true);
       firebase
         .database()
         .ref("meetups")
+        .orderByChild("creatorId")
+        .equalTo(getters.user.id)
         .once("value")
         .then(data => {
           const meetups = [];
@@ -50,7 +52,7 @@ export const store = new Vuex.Store({
               description: obj[key].description,
               imageUrl: obj[key].imageUrl,
               date: obj[key].date,
-              crearorId: obj[key].crearorId
+              creatorId: obj[key].creatorId
             });
           }
           commit("setLoading", false);
@@ -69,7 +71,7 @@ export const store = new Vuex.Store({
         description: payload.description,
         date: payload.date,
         time: payload.time,
-        crearorId: getters.user.id
+        creatorId: getters.user.id
       };
       firebase
         .database()
