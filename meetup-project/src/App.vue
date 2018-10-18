@@ -10,32 +10,29 @@
           to="/" 
           tag="span" 
           style="cursor: pointer"
-          > Dev meetup</router-link> 
+          > Umeet</router-link> 
       </v-toolbar-title>
       <v-spacer></v-spacer>
       <v-toolbar-items class="hidden-xs-only">
         <v-btn flat 
           v-for="item in menuItems" 
           :key="item.menuItems"
-          :to="item.link">
+          :to="item.link"
+          class="navbar-buttons"
+          >
           <v-icon left>
             {{item.icon}}
           </v-icon>
           {{item.title}}
           </v-btn>
-          <v-btn flat 
-          v-if="userIsAuthenticated"
-          @click="onLogout">
-          <v-icon left>
-            exit_to_app
-          </v-icon>
+          <v-btn flat v-if="userIsAuthenticated" @click="onLogout">
+          <v-icon left>exit_to_app </v-icon>
           Logout
           </v-btn>
       </v-toolbar-items>
     </v-toolbar>
     <main>
       <router-view>
-        
       </router-view>
     </main>
 
@@ -49,8 +46,7 @@
       <v-list-tile 
         v-for="item in menuItems" 
         :key="item.title"
-        :to="item.link"
-        >
+        :to="item.link">
         <v-list-tile-action>
           <v-icon>{{item.icon}}</v-icon>
         </v-list-tile-action>
@@ -122,6 +118,19 @@ export default {
 }
 .v-overlay:before {
   background: transparent;
+}
+
+nav {
+  height: 70px;
+  background-color: #0059b3 !important;
+  color: #fff !important;
+}
+.navbar-buttons {
+  color: #fff !important;
+}
+main {
+  background-color: #0080ff;
+  height: 100%;
 }
 </style>
 
