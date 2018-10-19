@@ -11,7 +11,9 @@
         </v-flex>
       </v-layout>
     <v-layout row wrap v-if="!loading && userIsAuthenticated">
-      <v-flex xs-12>
+      <v-flex xs-3>
+      </v-flex>
+      <v-flex xs-6>
           <v-carousel>
             <v-carousel-item
             v-for="(item) in meetups"
@@ -24,6 +26,8 @@
             </div>
             </v-carousel-item>
           </v-carousel>
+      </v-flex>
+      <v-flex xs-3>
       </v-flex>
     </v-layout>
     <v-layout row wrap v-if="!userIsAuthenticated">
@@ -42,8 +46,14 @@
 
 <script>
 export default {
+  data() {
+    return {
+      // avialableMeetup: ""
+    };
+  },
   computed: {
     meetups() {
+      // this.avialableMeetup = this.$store.getters.featuredMeetups;
       return this.$store.getters.featuredMeetups;
     },
     loading() {

@@ -3,6 +3,9 @@
     <v-layout row>
       <v-flex xs12 sm6 offset-sm3>
         <v-card>
+          <div v-if="error"> 
+          <app-alert @dismissed="onDismissed" :text="error.message"></app-alert>
+        </div>
           <v-card-text>
             <v-container>
               <form @submit.prevent="onSignin">
@@ -14,7 +17,7 @@
                       id="email"
                       v-model="email"
                       type="email"
-                      required></v-text-field>
+                      ></v-text-field>
                   </v-flex>
                 </v-layout>
                 <v-layout row>
@@ -25,7 +28,7 @@
                       id="password"
                       v-model="password"
                       type="password"
-                      required></v-text-field>
+                      ></v-text-field>
                   </v-flex>
                 </v-layout>
                 <v-layout row>
@@ -66,6 +69,9 @@ export default {
     },
     loading() {
       return this.$store.getters.loading;
+    },
+    error() {
+      return this.$store.getters.error;
     }
   },
   watch: {
