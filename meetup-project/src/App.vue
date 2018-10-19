@@ -132,5 +132,8 @@ main {
   background-color: #0080ff;
   height: 100%;
 }
+.whtie-color-text {
+  color: #fff;
+}
 </style>
 

@@ -10,7 +10,12 @@
             v-if="loading"></v-progress-circular>
         </v-flex>
       </v-layout>
-    <v-layout row wrap v-if="!loading && userIsAuthenticated">
+    <v-layout v-if="!meetupsChecker">
+      <v-flex xs12 class="text-xs-center">
+        <h1 class="whtie-color-text">You didn`t add any meet up <br> please add one</h1>
+      </v-flex>
+    </v-layout>
+    <v-layout row wrap v-if="meetupsChecker">
       <v-flex xs-3>
       </v-flex>
       <v-flex xs-6>
@@ -52,8 +57,12 @@ export default {
     };
   },
   computed: {
+    meetupsChecker() {
+      return (
+        !!this.meetups.length && !this.loading && !!this.userIsAuthenticated
+      );
+    },
     meetups() {
-      // this.avialableMeetup = this.$store.getters.featuredMeetups;
       return this.$store.getters.featuredMeetups;
     },
     loading() {
@@ -129,6 +138,12 @@ div.title {
   position: absolute;
   left: 0px;
   top: -32px;
+}
+.whtie-color-text {
+  color: #fff;
+  font-weight: 400;
+  font-size: 40px;
+  margin-top: 100px;
 }
 </style>
 

@@ -36,14 +36,14 @@
                 <v-layout row>
                   <v-flex xs12>
                      <v-text-field
-                    name="confirmPassword"
-                    label="Confirm Password"
-                    id="confirmPassword"
-                    v-model="confirmPassword"
-                    type="password"
+                      name="confirmPassword"
+                      label="Confirm Password"
+                      id="confirmPassword"
+                      v-model="confirmPassword"
+                      type="password"
                     >
                     </v-text-field>
-                     </v-flex>
+                  </v-flex>
                 </v-layout>
                     <v-btn type="submit" :disabled="loading" :loading="loading">
                       <span 
