@@ -1,13 +1,13 @@
 <template>
-  <v-container>
+  <v-container class="relative-positioned-container">
       <v-layout>
-        <v-flex xs12 class="text-xs-center">
-          <v-progress-circular
-            indeterminate
-            class="primary--text"
-            :width="7"
-            :size="70"
-            v-if="loading == true"></v-progress-circular>
+        <v-flex xs12 class="text-xs-center preloader-holder" v-if="loading == true">
+            <v-progress-circular
+              indeterminate
+              :width="7"
+              :size="70"
+              class="preloader-color-white">
+            </v-progress-circular>
         </v-flex>
       </v-layout>
     <v-layout v-if="userIsAuthenticated && !meetupsChecker">
@@ -40,6 +40,7 @@ export default {
       return this.$store.getters.featuredMeetups;
     },
     loading() {
+      // return true;
       return this.$store.getters.loading;
     },
     userIsAuthenticated() {
@@ -137,6 +138,23 @@ div.title {
 .add-meetup-button:hover {
   font-size: 90px;
   border: solid 1px #0080ff;
+}
+.preloader-color-white {
+  color: #fff;
+  margin-top: 200px;
+  margin-left: -30px;
+}
+.preloader-holder {
+  height: 100%;
+  width: 100%;
+  position: absolute !important;
+  z-index: 10000;
+  top: 50px;
+  height: 90%;
+  background-color: #0080ff;
+}
+.relative-positioned-container {
+  position: relative !important;
 }
 </style>
 
