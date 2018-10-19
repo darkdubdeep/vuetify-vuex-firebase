@@ -7,43 +7,24 @@
             class="primary--text"
             :width="7"
             :size="70"
-            v-if="loading"></v-progress-circular>
+            v-if="loading == true"></v-progress-circular>
         </v-flex>
       </v-layout>
-    <v-layout v-if="!meetupsChecker">
+    <v-layout v-if="userIsAuthenticated && !meetupsChecker">
       <v-flex xs12 class="text-xs-center">
         <h1 class="whtie-color-text">You didn`t add any meet up <br> please add one</h1>
-      </v-flex>
-    </v-layout>
-    <v-layout row wrap v-if="meetupsChecker">
-      <v-flex xs-3>
-      </v-flex>
-      <v-flex xs-6>
-          <v-carousel>
-            <v-carousel-item
-            v-for="(item) in meetups"
-            :key="item.id"
-            :src="item.imageUrl"
-            @click="onLoadMeetup(item.id)"
-            >
-            <div class="title">
-                {{item.title}}
-            </div>
-            </v-carousel-item>
-          </v-carousel>
-      </v-flex>
-      <v-flex xs-3>
+        <v-icon class="add-meetup-button" @click="createMeetup">add</v-icon>
       </v-flex>
     </v-layout>
     <v-layout row wrap v-if="!userIsAuthenticated">
         <h1 class="welcome-message-heading">Welcome to your best meetups organiser</h1>
     </v-layout>
-<v-layout row wrap v-if="!userIsAuthenticated">
-       <div class="mainDiv">
-  <div class="square"></div>
-  <div class="square2"></div>
-  <div class="square3"></div>
-</div>
+    <v-layout row wrap v-if="!userIsAuthenticated">
+    <div class="mainDiv">
+      <div class="square"></div>
+      <div class="square2"></div>
+      <div class="square3"></div>
+    </div>
     </v-layout>
     
   </v-container>
@@ -51,16 +32,9 @@
 
 <script>
 export default {
-  data() {
-    return {
-      // avialableMeetup: ""
-    };
-  },
   computed: {
     meetupsChecker() {
-      return (
-        !!this.meetups.length && !this.loading && !!this.userIsAuthenticated
-      );
+      return this.meetups.length;
     },
     meetups() {
       return this.$store.getters.featuredMeetups;
@@ -69,6 +43,9 @@ export default {
       return this.$store.getters.loading;
     },
     userIsAuthenticated() {
+      if (this.meetupsChecker) {
+        this.$router.push("/meetups");
+      }
       return (
         this.$store.getters.user !== null &&
         this.$store.getters.user !== undefined
@@ -76,6 +53,9 @@ export default {
     }
   },
   methods: {
+    createMeetup() {
+      this.$router.push("/createmeetup");
+    },
     onLoadMeetup: function(id) {
       this.$router.push("/meetups/" + id);
     }
@@ -144,6 +124,19 @@ div.title {
   font-weight: 400;
   font-size: 40px;
   margin-top: 100px;
+}
+.add-meetup-button {
+  color: #fff;
+  font-size: 80px;
+  margin-top: 50px;
+  transition: 0.1s;
+  cursor: pointer;
+  border: solid 1px #fff;
+  border-radius: 100%;
+}
+.add-meetup-button:hover {
+  font-size: 90px;
+  border: solid 1px #0080ff;
 }
 </style>
 
