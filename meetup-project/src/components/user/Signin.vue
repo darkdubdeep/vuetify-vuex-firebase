@@ -30,7 +30,17 @@
                 </v-layout>
                 <v-layout row>
                   <v-flex xs12>
-                    <v-btn type="submit">Sign in</v-btn>
+                    <v-btn 
+                    type="submit" 
+                    :disabled="loading" 
+                    :loading="loading"
+                    @click.native="loader = 'loading'"
+                    >
+                      <span 
+                        slot="loader" 
+                        class="custom-loader">
+                        <v-icon light>cached</v-icon>
+                        </span>Sign in</v-btn>
                   </v-flex>
                 </v-layout>
               </form>
@@ -53,6 +63,9 @@ export default {
   computed: {
     user() {
       return this.$store.getters.user;
+    },
+    loading() {
+      return this.$store.getters.loading;
     }
   },
   watch: {
@@ -89,5 +102,42 @@ export default {
   margin: 10px 0 0 0;
   color: #fff;
   background-color: #3399ff !important;
+}
+
+.custom-loader {
+  animation: loader 1s infinite;
+  display: flex;
+}
+@-moz-keyframes loader {
+  from {
+    transform: rotate(0);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+@-webkit-keyframes loader {
+  from {
+    transform: rotate(0);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+@-o-keyframes loader {
+  from {
+    transform: rotate(0);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+@keyframes loader {
+  from {
+    transform: rotate(0);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
 </style>

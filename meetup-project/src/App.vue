@@ -25,7 +25,7 @@
           </v-icon>
           {{item.title}}
           </v-btn>
-          <v-btn flat v-if="userIsAuthenticated" @click="onLogout">
+          <v-btn flat v-if="userIsAuthenticated" @click="onLogout" class="navbar-buttons">
           <v-icon left>exit_to_app </v-icon>
           Logout
           </v-btn>
@@ -77,6 +77,7 @@ export default {
   methods: {
     onLogout() {
       this.$store.dispatch("logOut");
+      location.reload();
     }
   },
   computed: {

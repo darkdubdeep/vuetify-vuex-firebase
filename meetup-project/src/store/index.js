@@ -133,7 +133,7 @@ export const store = new Vuex.Store({
       commit("setUser", { id: payload.uid, registeredMeetup: [] });
     },
     logOut({ commit }) {
-      firebase.auth().signOut();
+      firebase.auth().signOut().then(location.reload());
       commit("setUser", null);
     },
     clearError({ commit }) {
