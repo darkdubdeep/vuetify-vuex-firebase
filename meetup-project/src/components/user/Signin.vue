@@ -4,8 +4,8 @@
       <v-flex xs12 sm6 offset-sm3>
         <v-card>
           <div v-if="error"> 
-          <app-alert @dismissed="onDismissed" :text="error.message"></app-alert>
-        </div>
+            <app-alert @dismissed="onDismissed" :text="error.message"></app-alert>
+          </div>
           <v-card-text>
             <v-container>
               <form @submit.prevent="onSignin">

@@ -13,7 +13,7 @@
                 name="title"
                 label="Title"
                 id="title"
-                :rules="titleRules"
+                :rules="rules.titleRules"
                 v-model="title"
                 required></v-text-field>
             </v-flex>
@@ -25,6 +25,7 @@
                 label="Location"
                 id="location"
                 v-model="location"
+                :rules="rules.locationRules"
                 required></v-text-field>
             </v-flex>
           </v-layout>
@@ -35,6 +36,7 @@
                 label="Image URL"
                 id="image-url"
                 v-model="imageUrl"
+                :rules="rules.imageRules"
                 required></v-text-field>
             </v-flex>
           </v-layout>
@@ -98,22 +100,27 @@ export default {
       location: "",
       imageUrl: "",
       description: "",
-      titleRules: [
-        v => !!v || "Title is required",
-        v => v.length > 10 || "Title must be less than 10 characters"
-      ],
+      rules: {
+        titleRules: [
+          v => !!v || "Title is required",
+          v => v.length > 10 || "Title must be less than 10 characters"
+        ],
+        locationRules: [
+          v => !!v || "Location is required",
+          v => v.length > 10 || "Location name must be less than 10 characters"
+        ],
+        imageRules: [
+          v => !!v || "Image is required",
+          v => v.length > 10 || "Image url name must be less than 10 characters"
+        ]
+      },
       date: null,
       time: null
     };
   },
   computed: {
     formIsValid() {
-      return (
-        this.title !== "" &&
-        this.location !== "" &&
-        this.imageUrl !== "" &&
-        this.description !== ""
-      );
+      return this.title !== "" && this.location !== "" && this.imageUrl !== "";
     },
     submitableDatetime() {
       const date = new Date(this.date);

@@ -16,16 +16,14 @@
                                   <v-layout fill-height>
                                   <v-flex xs12 align-end flexbox>
                                       <span class="headline">{{meetup.title}}</span>
-                                      <div>{{meetup.date}}</div>
-                                      <div>{{meetup.time}}</div>
                                         </v-flex>
                                         </v-layout>
                                         </v-container>
                                         </v-img>
                                         <v-card-title>
                                       <div>
-                                        <span class="grey--text">November 10 2018</span><br>
-                                        <span>Whitehaven Beach</span><br>
+                                        <span class="grey--text">{{meetup.date}}</span><br>
+                                        <span>{{meetup.title}}</span><br>
                                       </div>
                                       </v-card-title>
                                       <v-card-actions>
@@ -49,6 +47,7 @@
 export default {
   computed: {
     meetups() {
+      console.log(this.$store.getters.loadedMeetups);
       return this.$store.getters.loadedMeetups;
     }
   }

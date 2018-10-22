@@ -65,7 +65,7 @@ export const store = new Vuex.Store({
     },
     createMeetup({ commit, getters }, payload) {
       const meetup = {
-        tilte: payload.title,
+        title: payload.title,
         location: payload.location,
         imageUrl: payload.imageUrl,
         description: payload.description,
