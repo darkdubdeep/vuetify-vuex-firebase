@@ -171,6 +171,7 @@ export default {
 }
 .create-meetup-form {
   margin-top: 10px;
+  background-color: #e6f2ff !important;
 }
 
 .submit-from-button-centered {
