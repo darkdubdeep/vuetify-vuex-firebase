@@ -61,7 +61,7 @@
                 id="description"
                 multi-line
                 v-model="description"
-                required></v-text-field>
+                ></v-text-field>
             </v-flex>
           </v-layout>
           <v-layout row class="data-time-picker-container">
@@ -204,6 +204,10 @@ export default {
 .create-meetup-form {
   margin-top: 10px;
   background-color: #e6f2ff !important;
+}
+
+.uplad-image-button {
+  margin: 10px 0 0 0;
 }
 
 .submit-from-button-centered {
