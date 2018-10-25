@@ -52,7 +52,8 @@ export const store = new Vuex.Store({
               description: obj[key].description,
               imageUrl: obj[key].imageUrl,
               date: obj[key].date,
-              creatorId: obj[key].creatorId
+              creatorId: obj[key].creatorId,
+              location: obj[key].location
             });
           }
           commit("setLoading", false);
@@ -74,7 +75,7 @@ export const store = new Vuex.Store({
       };
       let imageUrl;
       let key;
-
+      commit("setLoading", true);
       firebase
         .database()
         .ref("meetups")
@@ -120,6 +121,7 @@ export const store = new Vuex.Store({
             imageUrl: imageUrl,
             id: key
           });
+          commit("setLoading", false);
         })
         .catch(error => {
           console.log(error);

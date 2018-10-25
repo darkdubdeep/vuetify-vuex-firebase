@@ -13,6 +13,13 @@
                     <v-layout fill-height>
                     <v-flex xs12 align-end flexbox>
                         <span class="headline">{{meetup.title}}</span>
+                          <template v-if="true"> 
+                            <v-spacer>
+                              <app-edit-meetup-details-dialog>
+                                 
+                              </app-edit-meetup-details-dialog>
+                            </v-spacer>
+                          </template>
                           </v-flex>
                           </v-layout>
                           </v-container>
@@ -22,6 +29,7 @@
                           <span class="grey--text">{{meetup.date | date}}</span><br>
                            <div>{{meetup.time}}</div>
                         </div>
+                        <p>{{meetup.location}}</p>
                         </v-card-title>
                         <v-card-actions>
                         <v-btn 

@@ -7,10 +7,12 @@ import "vuetify/dist/vuetify.min.css";
 import DateFilter from "./filters/date";
 import * as firebase from "firebase";
 import alertCmp from "./components/shared/Alert.vue";
+import EditMeetupDetailsDialog from "./components/meetup/edit/EditMeetupDetailsDialog.vue";
 
 Vue.use(Vuetify);
 Vue.filter("date", DateFilter);
 Vue.component("app-alert", alertCmp);
+Vue.component("app-edit-meetup-details-dialog", EditMeetupDetailsDialog);
 
 Vue.config.productionTip = false;
 /* eslint-disable no-new */

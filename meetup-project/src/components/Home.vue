@@ -40,7 +40,6 @@ export default {
       return this.$store.getters.featuredMeetups;
     },
     loading() {
-      // return true;
       return this.$store.getters.loading;
     },
     userIsAuthenticated() {

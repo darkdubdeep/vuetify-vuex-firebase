@@ -1,9 +1,19 @@
 <template>
-  <v-container>
+  <v-container class="relative-positioned-container">
+      <v-layout>
+        <v-flex xs12 class="text-xs-center preloader-holder" v-if="loading == true">
+            <v-progress-circular
+              indeterminate
+              :width="7"
+              :size="70"
+              class="preloader-color-white">
+            </v-progress-circular>
+        </v-flex>
+      </v-layout>
       <v-layout row wrap>
           <v-flex xs12>
               <v-card class="info">
-                  <v-container fluid>
+                  <v-container fluid v-if="!loading">
                       <v-layout row v-for="meetup in meetups" :key="meetup.id" class="mb-5">
                           <v-flex xs>
                               <v-card>
@@ -24,6 +34,7 @@
                                       <div>
                                         <span class="grey--text">{{meetup.date}}</span><br>
                                         <span>{{meetup.title}}</span><br>
+                                        <span>{{meetup.location}}</span><br>
                                       </div>
                                       </v-card-title>
                                       <v-card-actions>
@@ -49,7 +60,29 @@ export default {
     meetups() {
       console.log(this.$store.getters.loadedMeetups);
       return this.$store.getters.loadedMeetups;
+    },
+    loading() {
+      return this.$store.getters.loading;
     }
   }
 };
 </script>
+
+<style>
+.preloader-color-white {
+  color: #fff;
+  margin-top: 200px;
+  margin-left: -30px;
+}
+.preloader-holder {
+  height: 100%;
+  width: 100%;
+  position: absolute !important;
+  z-index: 10000;
+  background-color: #0080ff;
+}
+.relative-positioned-container {
+  position: relative !important;
+}
+</style>
+
