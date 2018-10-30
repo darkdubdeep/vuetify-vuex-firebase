@@ -17,11 +17,11 @@
           </v-flex>
       </v-layout>
       <v-layout row wrap v-if="!loading && meetups && meetupsChecker">
-          <v-flex xs12>
+          <v-flex xs12 sm6 md6 lg6 offset-lg3 offset-md3 offset-sm3 mt-5> 
               <v-card class="info">
                   <v-container fluid>
                       <v-layout row v-for="meetup in meetups" :key="meetup.id" class="mb-5">
-                          <v-flex xs>
+                          <v-flex>
                               <v-card>
                                   <v-img
                                     class="white--text"
@@ -45,7 +45,7 @@
                                       <v-card-actions>
                                       <v-btn 
                                       flat 
-                                      color="orange"
+                                      color="info"
                                       :to="'/meetups/' + meetup.id"
                                       >View meetup</v-btn>
                                       </v-card-actions>
