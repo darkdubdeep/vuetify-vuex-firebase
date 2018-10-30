@@ -23,34 +23,49 @@
                                 name="title"
                                 label="Title"
                                 id="title"
-                                v-model="title"
+                                v-model="editedTitle"
                                 required></v-text-field>
                             </v-flex>
                         </v-layout>
-                    <v-layout row>
-                        <v-flex xs12>
-                        <v-text-field
-                            name="location"
-                            label="Location"
-                            id="location"
-                            v-model="location"
-                            required></v-text-field>
-                        </v-flex>
-                    </v-layout>
-                    <v-layout row>
-                        <v-flex xs12>
-                            <v-text-field
-                                name="description"
-                                label="Description"
-                                id="description"
-                                multi-line
-                                v-model="description"
-                                ></v-text-field>
-                        </v-flex>
-                    </v-layout>
+                        <v-layout row>
+                            <v-flex xs12>
+                                <v-text-field
+                                    name="description"
+                                    label="Description"
+                                    id="description"
+                                    multi-line
+                                    v-model="editedDescription"
+                                    ></v-text-field>
+                            </v-flex>
+                        </v-layout>
+                         <v-layout row wrap>
+                             <v-flex xs12>
+                                <v-card-actions>
+                                    <v-btn flat class="blue--text darken-1">
+                                        Close
+                                    </v-btn>
+                                    <v-btn flat class="blue--text darken-1">
+                                        Save
+                                    </v-btn>
+                                </v-card-actions> 
+                             </v-flex>
+                         </v-layout>
                     </v-flex>
                 </v-layout>
             </v-container>
         </v-card>
     </v-dialog>
 </template>
+
+<script>
+export default {
+  props: ["meetup"],
+  data() {
+    return {
+      editedTitle: this.meetup.title,
+      editedDescription: this.meetup.description
+    };
+  }
+};
+</script>
+

@@ -1,6 +1,17 @@
 <template>
   <v-container>
     <v-layout row wrap>
+        <v-flex xs12 class="text-xs-center preloader-holder" v-if="loading == true">
+            <v-progress-circular
+              indeterminate
+              :width="7"
+              :size="70"
+              class="preloader-color-white">
+            </v-progress-circular>
+        </v-flex>
+      </v-layout>
+
+    <v-layout row wrap v-if="meetup.title && meetup.description">
         <v-flex xs12>
             <v-card>
                 <v-card>
@@ -13,9 +24,9 @@
                     <v-layout fill-height>
                     <v-flex xs12 align-end flexbox>
                         <span class="headline">{{meetup.title}}</span>
-                          <template v-if="true"> 
+                          <template v-if="meetup"> 
                             <v-spacer>
-                              <app-edit-meetup-details-dialog>
+                              <app-edit-meetup-details-dialog :meetup="meetup">
                                  
                               </app-edit-meetup-details-dialog>
                             </v-spacer>
@@ -51,6 +62,9 @@ export default {
   computed: {
     meetup() {
       return this.$store.getters.loadedMeetup(this.id);
+    },
+    loading() {
+      return this.$store.getters.loading;
     }
   }
 };
