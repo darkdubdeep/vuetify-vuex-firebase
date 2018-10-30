@@ -1,5 +1,5 @@
 <template>
-    <v-dialog width="320px" persistent>
+    <v-dialog width="320px" persistent v-model="editDialog">
         <v-btn floateing slot="activator">
             <v-icon>
                 edit
@@ -41,10 +41,10 @@
                          <v-layout row wrap>
                              <v-flex xs12>
                                 <v-card-actions>
-                                    <v-btn flat class="blue--text darken-1">
+                                    <v-btn flat class="blue--text darken-1" @click="editDialog = false">
                                         Close
                                     </v-btn>
-                                    <v-btn flat class="blue--text darken-1">
+                                    <v-btn flat class="blue--text darken-1" @click="onSaveChanges">
                                         Save
                                     </v-btn>
                                 </v-card-actions> 
@@ -62,9 +62,24 @@ export default {
   props: ["meetup"],
   data() {
     return {
+      editDialog: false,
       editedTitle: this.meetup.title,
       editedDescription: this.meetup.description
     };
+  },
+  methods: {
+    onSaveChanges() {
+      if (this.editedTitle && this.editedDescription) {
+        this.editDialog = false;
+        this.$store.dispatch("updateMeetupData", {
+          id: this.meetup.id,
+          title: this.editedTitle,
+          description: this.editedDescription
+        });
+      } else {
+        return;
+      }
+    }
   }
 };
 </script>

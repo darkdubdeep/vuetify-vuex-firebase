@@ -10,10 +10,16 @@
             </v-progress-circular>
         </v-flex>
       </v-layout>
-      <v-layout row wrap>
+      <v-layout v-if="!meetupsChecker">
+          <v-flex xs12 class="text-xs-center">
+          <h1 class="whtie-color-text">You didn`t add any meet up <br> please add one</h1>
+          <v-icon class="add-meetup-button" @click="createMeetup">add</v-icon>
+          </v-flex>
+      </v-layout>
+      <v-layout row wrap v-if="!loading && meetups && meetupsChecker">
           <v-flex xs12>
               <v-card class="info">
-                  <v-container fluid v-if="!loading">
+                  <v-container fluid>
                       <v-layout row v-for="meetup in meetups" :key="meetup.id" class="mb-5">
                           <v-flex xs>
                               <v-card>
@@ -33,7 +39,6 @@
                                         <v-card-title>
                                       <div>
                                         <span class="grey--text">{{meetup.date}}</span><br>
-                                        <span>{{meetup.title}}</span><br>
                                         <span>{{meetup.location}}</span><br>
                                       </div>
                                       </v-card-title>
@@ -63,6 +68,14 @@ export default {
     },
     loading() {
       return this.$store.getters.loading;
+    },
+    meetupsChecker() {
+      return this.meetups.length;
+    }
+  },
+  methods: {
+    createMeetup() {
+      this.$router.push("/createmeetup");
     }
   }
 };
@@ -83,6 +96,25 @@ export default {
 }
 .relative-positioned-container {
   position: relative !important;
+}
+.whtie-color-text {
+  color: #fff;
+  font-weight: 400;
+  font-size: 40px;
+  margin-top: 100px;
+}
+.add-meetup-button {
+  color: #fff !important;
+  font-size: 80px;
+  margin-top: 50px;
+  transition: 0.1s;
+  cursor: pointer;
+  border: solid 1px #fff;
+  border-radius: 100%;
+}
+.add-meetup-button:hover {
+  font-size: 90px;
+  border: solid 1px #0080ff;
 }
 </style>
 

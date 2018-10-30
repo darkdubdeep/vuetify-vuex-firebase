@@ -19,6 +19,16 @@ export const store = new Vuex.Store({
       let newMeetup = payload;
       state.loadedMeetups.push(newMeetup);
     },
+    updateMeetupData(state, payload) {
+      const meetup = state.loadedMeetups.find(meetup => {
+        return meetup.id === payload.id;
+      });
+      meetup.title = payload.title;
+      meetup.description = payload.description;
+      if (payload.date) {
+        meetup.date = payload.date;
+      }
+    },
     setUser(state, payload) {
       state.user = payload;
     },
@@ -122,6 +132,25 @@ export const store = new Vuex.Store({
             id: key
           });
           commit("setLoading", false);
+        })
+        .catch(error => {
+          console.log(error);
+        });
+    },
+    updateMeetupData({ commit }, payload) {
+      const updateObj = {};
+      updateObj.title = payload.title;
+      updateObj.description = payload.title;
+      if (payload.date) {
+        updateObj.date = payload.date;
+      }
+      firebase
+        .database()
+        .ref("meetups")
+        .child(payload.id)
+        .update(updateObj)
+        .then(() => {
+          commit("updateMeetupData", payload);
         })
         .catch(error => {
           console.log(error);
