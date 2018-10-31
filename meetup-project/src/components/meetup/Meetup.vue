@@ -10,46 +10,46 @@
             </v-progress-circular>
         </v-flex>
       </v-layout>
-
     <v-layout row wrap v-if="meetup.title && meetup.description">
         <v-flex xs12>
             <v-card>
-                <v-card>
-                    <v-img
+              <v-layout fill-height>
+                 <v-flex xs7>
+                  <v-img
                       class="white--text"
-                      height="200px"
+                      height="400px"
                       :src="meetup.imageUrl"
+                      xs5
                     >
-                    <v-container fill-height fluid>
-                    <v-layout fill-height>
-                    <v-flex xs12 align-end flexbox>
-                        <span class="headline">{{meetup.title}}</span>
-                          <template v-if="meetup"> 
-                            <v-spacer>
-                              <app-edit-meetup-details-dialog :meetup="meetup">
-                                 
-                              </app-edit-meetup-details-dialog>
-                            </v-spacer>
-                          </template>
-                          </v-flex>
+                    <v-flex align-end flexbox>
+                      <span class="headline meetup-title">{{meetup.title}}</span>
+                    </v-flex>
+                  </v-img>
+                </v-flex>
+                   <v-flex xs5>
+                      <v-card-title>
+                          <div>
+                            <span class="grey--text">{{meetup.date | date}}</span><br>
+                            <div>{{meetup.time}}</div>
+                          </div>
+                        <template v-if="meetup" > 
+                          <v-layout row wrap align-center justify-end  fill-height>
+                            <app-edit-meetup-details-dialog :meetup="meetup">
+                            </app-edit-meetup-details-dialog>
                           </v-layout>
-                          </v-container>
-                          </v-img>
-                          <v-card-title>
-                        <div>
-                          <span class="grey--text">{{meetup.date | date}}</span><br>
-                           <div>{{meetup.time}}</div>
-                        </div>
-                        <p>{{meetup.location}}</p>
-                        </v-card-title>
-                        <v-card-actions>
-                        <v-btn 
-                        flat 
-                        color="orange"
-                        to=""
-                        >Register</v-btn>
-                    </v-card-actions>
-                </v-card>
+                        </template>
+                      </v-card-title>
+                      <v-card-text>
+
+                          <h2>Location</h2>
+                          <p>{{meetup.location}}</p>
+
+                          <h2>Description</h2>
+                          <p>{{meetup.description}}</p>
+
+                      </v-card-text>
+                   </v-flex>
+              </v-layout>
             </v-card>
         </v-flex>
     </v-layout>
@@ -69,4 +69,12 @@ export default {
   }
 };
 </script>
+
+<style>
+.meetup-title {
+  display: block;
+  padding: 25px 0 0 25px;
+}
+</style>
+
 

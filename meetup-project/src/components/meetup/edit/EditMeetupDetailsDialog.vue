@@ -1,6 +1,6 @@
 <template>
     <v-dialog width="320px" persistent v-model="editDialog">
-        <v-btn floateing slot="activator">
+        <v-btn floateing fab slot="activator">
             <v-icon>
                 edit
             </v-icon>
