@@ -13,10 +13,10 @@
     <v-layout row wrap v-if="meetup.title && meetup.description">
         <v-flex xs12>
             <v-card>
-              <v-layout fill-height>
-                 <v-flex xs7>
+              <v-layout fill-height row wrap>
+                 <v-flex xs12 sm7>
                   <v-img
-                      class="white--text"
+                      class="white--text meetup-image"
                       height="400px"
                       :src="meetup.imageUrl"
                       xs5
@@ -26,7 +26,7 @@
                     </v-flex>
                   </v-img>
                 </v-flex>
-                   <v-flex xs5>
+                   <v-flex xs12 sm5>
                       <v-card-title>
                           <div>
                             <span class="grey--text">{{meetup.date | date}}</span><br>
@@ -74,6 +74,12 @@ export default {
 .meetup-title {
   display: block;
   padding: 25px 0 0 25px;
+}
+
+@media screen and (max-width: 992px) {
+  .meetup-image {
+    height: 280px !important;
+  }
 }
 </style>
 
