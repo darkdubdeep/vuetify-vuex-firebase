@@ -96,8 +96,8 @@ export default {
             icon: "room",
             title: "Organize Meetup",
             link: "/createmeetup"
-          },
-          { icon: "person", title: "Profile", link: "/profile" }
+          }
+          // { icon: "person", title: "Profile", link: "/profile" }
         ];
       }
       return menuItems;
