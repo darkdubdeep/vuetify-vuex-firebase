@@ -1,9 +1,7 @@
 <template>
     <v-dialog width="320px" persistent v-model="editDialog">
-        <v-btn floateing fab slot="activator">
-            <v-icon>
-                edit
-            </v-icon>
+        <v-btn  slot="activator">
+            Edit information
         </v-btn>
         <v-card>
             <v-container>
@@ -25,6 +23,17 @@
                                 id="title"
                                 v-model="editedTitle"
                                 required></v-text-field>
+                            </v-flex>
+                        </v-layout>
+                        <v-layout row>
+                            <v-flex xs12>
+                                <v-text-field
+                                    name="location"
+                                    label="Location"
+                                    id="location"
+                                    multi-line
+                                    v-model="editedLocation"
+                                    ></v-text-field>
                             </v-flex>
                         </v-layout>
                         <v-layout row>
@@ -64,7 +73,8 @@ export default {
     return {
       editDialog: false,
       editedTitle: this.meetup.title,
-      editedDescription: this.meetup.description
+      editedDescription: this.meetup.description,
+      editedLocation: this.meetup.location
     };
   },
   methods: {
@@ -74,7 +84,8 @@ export default {
         this.$store.dispatch("updateMeetupData", {
           id: this.meetup.id,
           title: this.editedTitle,
-          description: this.editedDescription
+          description: this.editedDescription,
+          location: this.editedLocation
         });
       } else {
         return;

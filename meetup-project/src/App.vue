@@ -3,7 +3,7 @@
     <v-toolbar>
       <v-toolbar-side-icon 
         @click="sideNav = !sideNav" 
-        class="hidden-sm-and-up">
+        class="hidden-sm-and-up toolbar-side-icon">
       </v-toolbar-side-icon>
       <v-toolbar-title>
           <router-link 
@@ -131,6 +131,9 @@ nav {
 main {
   background-color: #0080ff;
   height: 100%;
+}
+.toolbar-side-icon {
+  color: #fff !important;
 }
 </style>
 

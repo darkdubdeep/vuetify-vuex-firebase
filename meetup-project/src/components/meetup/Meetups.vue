@@ -31,6 +31,9 @@
                                   <v-container fill-height fluid>
                                   <v-layout fill-height>
                                   <v-flex xs12 align-end flexbox>
+                                    <v-btn  @click="deleteMeetup(meetup)">
+                                        Delete meetup
+                                    </v-btn>
                                       <span class="headline">{{meetup.title}}</span>
                                         </v-flex>
                                         </v-layout>
@@ -38,7 +41,7 @@
                                         </v-img>
                                         <v-card-title>
                                       <div>
-                                        <span class="grey--text">{{meetup.date}}</span><br>
+                                        <span class="grey--text">{{meetup.date | date}}</span><br>
                                         <span>{{meetup.location}}</span><br>
                                       </div>
                                       </v-card-title>
@@ -76,6 +79,10 @@ export default {
   methods: {
     createMeetup() {
       this.$router.push("/createmeetup");
+    },
+    deleteMeetup(meetup) {
+      console.log(meetup);
+      this.$store.dispatch("deleteMeetup", meetup);
     }
   }
 };

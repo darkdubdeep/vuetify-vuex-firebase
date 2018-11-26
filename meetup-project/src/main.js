@@ -8,11 +8,15 @@ import DateFilter from "./filters/date";
 import * as firebase from "firebase";
 import alertCmp from "./components/shared/Alert.vue";
 import EditMeetupDetailsDialog from "./components/meetup/edit/EditMeetupDetailsDialog.vue";
+import EditMeetupDateDialog from "./components/meetup/edit/EditMeetupDateDialog.vue";
+import EditMeetupTimeDialog from "./components/meetup/edit/EditMeetupTimeDialog.vue";
 
 Vue.use(Vuetify);
 Vue.filter("date", DateFilter);
 Vue.component("app-alert", alertCmp);
 Vue.component("app-edit-meetup-details-dialog", EditMeetupDetailsDialog);
+Vue.component("app-edit-meetup-date-dialog", EditMeetupDateDialog);
+Vue.component("app-edit-meetup-time-dialog", EditMeetupTimeDialog);
 
 Vue.config.productionTip = false;
 /* eslint-disable no-new */

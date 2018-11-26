@@ -23,10 +23,26 @@ export const store = new Vuex.Store({
       const meetup = state.loadedMeetups.find(meetup => {
         return meetup.id === payload.id;
       });
-      meetup.title = payload.title;
-      meetup.description = payload.description;
+      if (payload.title) {
+        meetup.title = payload.title;
+      }
+      if (payload.description) {
+        meetup.description = payload.description;
+      }
+      if (payload.location) {
+        meetup.location = payload.location;
+      }
       if (payload.date) {
         meetup.date = payload.date;
+        console.log(meetup);
+      }
+    },
+    deleteMeetup(state, payload) {
+      for (var i = 0; i < state.loadedMeetups.length; i++) {
+        if (state.loadedMeetups[i].id == payload.id) {
+          state.loadedMeetups.splice(i, 1);
+          break;
+        }
       }
     },
     setUser(state, payload) {
@@ -80,7 +96,6 @@ export const store = new Vuex.Store({
         location: payload.location,
         description: payload.description,
         date: payload.date,
-        time: payload.time,
         creatorId: getters.user.id
       };
       let imageUrl;
@@ -137,12 +152,33 @@ export const store = new Vuex.Store({
           console.log(error);
         });
     },
+    deleteMeetup({ commit }, payload) {
+      console.log(payload);
+      firebase
+        .database()
+        .ref("meetups")
+        .child(payload.id)
+        .remove()
+        .then(() => {
+          commit("deleteMeetup", payload);
+        })
+        .catch(error => {
+          console.log(error);
+        });
+    },
     updateMeetupData({ commit }, payload) {
       const updateObj = {};
-      updateObj.title = payload.title;
-      updateObj.description = payload.title;
+      if (payload.title) {
+        updateObj.title = payload.title;
+      }
+      if (payload.description) {
+        updateObj.description = payload.description;
+      }
       if (payload.date) {
         updateObj.date = payload.date;
+      }
+      if (payload.location) {
+        updateObj.location = payload.location;
       }
       firebase
         .database()
@@ -200,7 +236,10 @@ export const store = new Vuex.Store({
       commit("setUser", { id: payload.uid, registeredMeetup: [] });
     },
     logOut({ commit }) {
-      firebase.auth().signOut().then(location.reload());
+      firebase
+        .auth()
+        .signOut()
+        .then(location.reload());
       commit("setUser", null);
     },
     clearError({ commit }) {
