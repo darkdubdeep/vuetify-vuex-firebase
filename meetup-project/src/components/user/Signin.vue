@@ -82,6 +82,10 @@ export default {
     }
   },
   methods: {
+    onDismissed() {
+      console.log("dissmissed");
+      this.$store.dispatch("clearError");
+    },
     onSignin() {
       this.$store.dispatch("signUserIn", {
         email: this.email,
