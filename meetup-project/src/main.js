@@ -10,6 +10,7 @@ import alertCmp from "./components/shared/Alert.vue";
 import EditMeetupDetailsDialog from "./components/meetup/edit/EditMeetupDetailsDialog.vue";
 import EditMeetupDateDialog from "./components/meetup/edit/EditMeetupDateDialog.vue";
 import EditMeetupTimeDialog from "./components/meetup/edit/EditMeetupTimeDialog.vue";
+import DeleteMeetup from "./components/meetup/DeleteMeetup.vue";
 
 Vue.use(Vuetify);
 Vue.filter("date", DateFilter);
@@ -17,6 +18,7 @@ Vue.component("app-alert", alertCmp);
 Vue.component("app-edit-meetup-details-dialog", EditMeetupDetailsDialog);
 Vue.component("app-edit-meetup-date-dialog", EditMeetupDateDialog);
 Vue.component("app-edit-meetup-time-dialog", EditMeetupTimeDialog);
+Vue.component("app-delete-meetup", DeleteMeetup);
 
 Vue.config.productionTip = false;
 /* eslint-disable no-new */

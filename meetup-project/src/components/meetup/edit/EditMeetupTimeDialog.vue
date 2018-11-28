@@ -1,45 +1,31 @@
 <template>
-    <v-dialog width="320px" persistent v-model="editDialog">
-        <v-btn slot="activator">
-            Edit Time
-        </v-btn>
-        <v-card>
-            <v-container>
-                <v-layout row wrap>
-                    <v-flex xs12>
-                        <v-card-title>
-                             Edit Meetup Time
-                        </v-card-title>
-                    </v-flex>
-                </v-layout>
-                <v-divider></v-divider>
-                <v-layout row wrap>
-                    <v-flex xs12>
-                         <v-layout row wrap>
-                             <v-flex xs12>
-                                 <v-time-picker v-model="editableTime" style="width:100%" actions format="24hr">
-                                    <template slot-scope="{}"> 
-                                        <v-btn 
-                                        class="blue--text darlen-1" 
-                                        flat @click.native="editDialog = false"
-                                        >
-                                        Close 
-                                        </v-btn>
-                                        <v-btn 
-                                        class="blue--text darlen-1" 
-                                        flat @click.native="onSaveChanges"
-                                        >
-                                        Save 
-                                        </v-btn>
-                                    </template>
-                                 </v-time-picker>
-                             </v-flex>
-                         </v-layout>
-                    </v-flex>
-                </v-layout>
-            </v-container>
-        </v-card>
-    </v-dialog>
+  <v-dialog width="320px" persistent v-model="editDialog">
+    <v-btn class="blue darken-3 edit-time-button" dark slot="activator">Edit Time</v-btn>
+    <v-card>
+      <v-container>
+        <v-layout row wrap>
+          <v-flex xs12>
+            <v-card-title>Edit Meetup Time</v-card-title>
+          </v-flex>
+        </v-layout>
+        <v-divider></v-divider>
+        <v-layout row wrap>
+          <v-flex xs12>
+            <v-layout row wrap>
+              <v-flex xs12>
+                <v-time-picker v-model="editableTime" style="width:100%" actions format="24hr">
+                  <template slot-scope="{}">
+                    <v-btn class="blue--text darlen-1" flat @click.native="editDialog = false">Close</v-btn>
+                    <v-btn class="blue--text darlen-1" flat @click.native="onSaveChanges">Save</v-btn>
+                  </template>
+                </v-time-picker>
+              </v-flex>
+            </v-layout>
+          </v-flex>
+        </v-layout>
+      </v-container>
+    </v-card>
+  </v-dialog>
 </template>
 
 <script>
