@@ -55,7 +55,7 @@ export default {
   },
   created() {
     console.log(this.meetup.date);
-    // this.editableDate = new Date(this.meetup.date);
+    this.editableDate = new Date(this.meetup.date).toISOString().substr(0, 10);
   }
 };
 </script>
