@@ -1,32 +1,28 @@
 <template>
   <v-container class="relative-positioned-container">
-      <v-layout>
-        <v-flex xs12 class="text-xs-center preloader-holder" v-if="loading == true">
-            <v-progress-circular
-              indeterminate
-              :width="7"
-              :size="70"
-              class="preloader-color-white">
-            </v-progress-circular>
-        </v-flex>
-      </v-layout>
+    <v-layout>
+      <v-flex xs12 class="text-xs-center preloader-holder" v-if="loading == true">
+        <v-progress-circular indeterminate :width="7" :size="70" class="preloader-color-white"></v-progress-circular>
+      </v-flex>
+    </v-layout>
     <v-layout v-if="userIsAuthenticated && !meetupsChecker">
       <v-flex xs12 class="text-xs-center">
-        <h1 class="whtie-color-text">You didn`t add any meet up <br> please add one</h1>
+        <h1 class="whtie-color-text">You didn`t add any meet up
+          <br>please add one
+        </h1>
         <v-icon class="add-meetup-button" @click="createMeetup">add</v-icon>
       </v-flex>
     </v-layout>
     <v-layout row wrap v-if="!userIsAuthenticated">
-        <h1 class="welcome-message-heading">Welcome to your best meetups organiser</h1>
+      <h1 class="welcome-message-heading">Welcome to your best meeting organizer</h1>
     </v-layout>
     <v-layout row wrap v-if="!userIsAuthenticated">
-    <div class="mainDiv">
-      <div class="square"></div>
-      <div class="square2"></div>
-      <div class="square3"></div>
-    </div>
+      <div class="mainDiv">
+        <div class="square"></div>
+        <div class="square2"></div>
+        <div class="square3"></div>
+      </div>
     </v-layout>
-    
   </v-container>
 </template>
 
