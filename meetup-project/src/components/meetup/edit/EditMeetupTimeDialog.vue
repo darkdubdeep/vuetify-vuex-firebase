@@ -39,7 +39,6 @@ export default {
   },
   methods: {
     onSaveChanges() {
-      console.log(this.editableTime);
       const newDate = new Date(this.meetup.date);
       const hours = this.editableTime.match(/^(\d+)/)[1];
       const minutes = this.editableTime.match(/:(\d+)/)[1];

@@ -53,14 +53,8 @@
 
 <script>
 export default {
-  data () {
-      return {
-        // deleteMeetupDialog: false
-      }
-    },
   computed: {
     meetups() {
-      console.log(this.$store.getters.loadedMeetups);
       return this.$store.getters.loadedMeetups;
     },
     loading() {
@@ -73,11 +67,7 @@ export default {
   methods: {
     createMeetup() {
       this.$router.push("/createmeetup");
-    },
-    // deleteMeetup(meetup) {
-    //   console.log(meetup);
-    //   this.$store.dispatch("deleteMeetup", meetup);
-    // }
+    }
   }
 };
 </script>
@@ -119,7 +109,7 @@ export default {
 }
 .delete-button {
   float: right;
-  margin-top:-2px;
+  margin-top: -2px;
 }
 </style>
 

@@ -3,7 +3,7 @@
     <v-layout row>
       <v-flex xs12 sm6 offset-sm3>
         <v-card>
-          <div v-if="error"> 
+          <div v-if="error">
             <app-alert @dismissed="onDismissed" :text="error.message"></app-alert>
           </div>
           <v-card-text>
@@ -11,13 +11,7 @@
               <form @submit.prevent="onSignin">
                 <v-layout row>
                   <v-flex xs12>
-                    <v-text-field
-                      name="email"
-                      label="Mail"
-                      id="email"
-                      v-model="email"
-                      type="email"
-                      ></v-text-field>
+                    <v-text-field name="email" label="Mail" id="email" v-model="email" type="email"></v-text-field>
                   </v-flex>
                 </v-layout>
                 <v-layout row>
@@ -28,22 +22,21 @@
                       id="password"
                       v-model="password"
                       type="password"
-                      ></v-text-field>
+                    ></v-text-field>
                   </v-flex>
                 </v-layout>
                 <v-layout row>
                   <v-flex xs12>
-                    <v-btn 
-                    type="submit" 
-                    :disabled="loading" 
-                    :loading="loading"
-                    @click.native="loader = 'loading'"
+                    <v-btn
+                      type="submit"
+                      :disabled="loading"
+                      :loading="loading"
+                      @click.native="loader = 'loading'"
                     >
-                      <span 
-                        slot="loader" 
-                        class="custom-loader">
+                      <span slot="loader" class="custom-loader">
                         <v-icon light>cached</v-icon>
-                        </span>Sign in</v-btn>
+                      </span>Sign in
+                    </v-btn>
                   </v-flex>
                 </v-layout>
               </form>
@@ -83,7 +76,6 @@ export default {
   },
   methods: {
     onDismissed() {
-      console.log("dissmissed");
       this.$store.dispatch("clearError");
     },
     onSignin() {
