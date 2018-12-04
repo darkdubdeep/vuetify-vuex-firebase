@@ -27,7 +27,6 @@ export default {
       }
       if (payload.date) {
         meetup.date = payload.date;
-        console.log(meetup);
       }
     },
     deleteMeetup(state, payload) {
@@ -50,7 +49,6 @@ export default {
         .once("value")
         .then(data => {
           const meetups = [];
-          console.log(data.val());
           const obj = data.val();
           for (let key in obj) {
             meetups.push({
@@ -87,15 +85,12 @@ export default {
         .ref("meetups")
         .push(meetup)
         .then(data => {
-          console.log(data);
           key = data.key;
           return key;
         })
         .then(key => {
-          console.log(payload);
           const filename = payload.image.name;
           const ext = filename.slice(filename.lastIndexOf("."));
-          console.log(key);
           return firebase
             .storage()
             .ref("meetups/" + key + "." + ext)
@@ -134,7 +129,6 @@ export default {
         });
     },
     deleteMeetup({ commit }, payload) {
-      console.log(payload);
       firebase
         .database()
         .ref("meetups")

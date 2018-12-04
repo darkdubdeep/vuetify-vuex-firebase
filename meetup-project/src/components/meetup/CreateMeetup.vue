@@ -1,99 +1,100 @@
 <template>
   <v-container>
-    <v-layout row>
-    </v-layout>
+    <v-layout row></v-layout>
     <v-layout row>
       <v-flex xs12 sm10 md10 lg8 offset-sm1 offset-md1 offset-lg2>
         <v-card class="create-meetup-form">
-        <v-card-text>
-        <form @submit.prevent="onCreateMeetup">
-          <v-layout row>
-            <v-flex xs12>
-              <v-text-field
-                name="title"
-                label="Title"
-                id="title"
-                :rules="rules.titleRules"
-                v-model="title"
-                required></v-text-field>
-            </v-flex>
-          </v-layout>
-          <v-layout row>
-            <v-flex xs12>
-              <v-text-field
-                name="location"
-                label="Location"
-                id="location"
-                v-model="location"
-                :rules="rules.locationRules"
-                required></v-text-field>
-            </v-flex>
-          </v-layout>
-          <v-layout row>
-            <v-flex xs12>
-              <!-- <v-text-field
+          <v-card-text>
+            <form @submit.prevent="onCreateMeetup">
+              <v-layout row>
+                <v-flex xs12>
+                  <v-text-field
+                    name="title"
+                    label="Title"
+                    id="title"
+                    :rules="rules.titleRules"
+                    v-model="title"
+                    required
+                  ></v-text-field>
+                </v-flex>
+              </v-layout>
+              <v-layout row>
+                <v-flex xs12>
+                  <v-text-field
+                    name="location"
+                    label="Location"
+                    id="location"
+                    v-model="location"
+                    :rules="rules.locationRules"
+                    required
+                  ></v-text-field>
+                </v-flex>
+              </v-layout>
+              <v-layout row>
+                <v-flex xs12>
+                  <!-- <v-text-field
                 name="imageUrl"
                 label="Image URL"
                 id="image-url"
                 v-model="imageUrl"
                 :rules="rules.imageRules"
-                required></v-text-field> -->
-                <v-btn raised class="uplad-image-button" @click="onPickImage">Upload image</v-btn>
-                <input 
-                type="file" 
-                style="display:none" 
-                ref="fileInput" 
-                accept="image/*"
-                @change="onImagePicked"
-                >
-            </v-flex>
-          </v-layout>
-          <v-layout row>
-            <v-flex xs12>
-              <img :src="imageUrl" height="150">
-            </v-flex>
-          </v-layout>
-          <v-layout row>
-            <v-flex xs12>
-              <v-text-field
-                name="description"
-                label="Description"
-                id="description"
-                multi-line
-                v-model="description"
-                ></v-text-field>
-            </v-flex>
-          </v-layout>
-          <v-layout row class="data-time-picker-container">
-            <v-flex xs12 class="data-picker-holder">
-               <v-date-picker 
-                  v-model="date"
-                  color="green lighten-1" 
-                  header-color="primary"
-                  class="centered-data-time-picker"
-               ></v-date-picker>
-            </v-flex>
-            <v-flex xs12 class="time-picker-holder">
-               <v-time-picker 
-                  v-model="time" 
-                  format = "24hr"
-                  color="green lighten-1" 
-                  header-color="primary"
-                  class="centered-data-time-picker"
-               ></v-time-picker>
-            </v-flex>
-          </v-layout>
-          <v-layout row>
-            <v-flex xs12>
-              <v-btn
-                class="primary submit-from-button-centered"
-                :disabled="!formIsValid"
-                type="submit"
-                >Create Meetup</v-btn>
-            </v-flex>
-          </v-layout>
-        </form>
-        </v-card-text>
+                  required></v-text-field>-->
+                  <v-btn raised class="uplad-image-button" @click="onPickImage">Upload image</v-btn>
+                  <input
+                    type="file"
+                    style="display:none"
+                    ref="fileInput"
+                    accept="image/*"
+                    @change="onImagePicked"
+                  >
+                </v-flex>
+              </v-layout>
+              <v-layout row>
+                <v-flex xs12>
+                  <img :src="imageUrl" height="150">
+                </v-flex>
+              </v-layout>
+              <v-layout row>
+                <v-flex xs12>
+                  <v-text-field
+                    name="description"
+                    label="Description"
+                    id="description"
+                    multi-line
+                    v-model="description"
+                  ></v-text-field>
+                </v-flex>
+              </v-layout>
+              <v-layout row class="data-time-picker-container">
+                <v-flex xs12 class="data-picker-holder">
+                  <v-date-picker
+                    v-model="date"
+                    color="green lighten-1"
+                    header-color="primary"
+                    class="centered-data-time-picker"
+                  ></v-date-picker>
+                </v-flex>
+                <v-flex xs12 class="time-picker-holder">
+                  <v-time-picker
+                    v-model="time"
+                    format="24hr"
+                    color="green lighten-1"
+                    header-color="primary"
+                    class="centered-data-time-picker"
+                  ></v-time-picker>
+                </v-flex>
+              </v-layout>
+              <v-layout row>
+                <v-flex xs12>
+                  <v-btn
+                    class="primary submit-from-button-centered"
+                    :disabled="!formIsValid"
+                    type="submit"
+                  >Create Meetup</v-btn>
+                </v-flex>
+              </v-layout>
+            </form>
+          </v-card-text>
         </v-card>
       </v-flex>
     </v-layout>

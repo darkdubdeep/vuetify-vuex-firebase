@@ -39,7 +39,6 @@ export default {
   },
   methods: {
     onSaveChanges() {
-      console.log(this.editableTime);
       const newDate = new Date(this.meetup.date);
       const hours = this.editableTime.match(/^(\d+)/)[1];
       const minutes = this.editableTime.match(/:(\d+)/)[1];
@@ -53,7 +52,6 @@ export default {
     }
   },
   created() {
-    console.log(this.meetup.date);
     this.editableTime = new Date(this.meetup.date).toLocaleTimeString();
   }
 };

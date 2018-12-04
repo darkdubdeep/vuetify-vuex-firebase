@@ -7,7 +7,7 @@
       <v-card-text>Are you realy want to delete this meetup?</v-card-text>
       <v-card-actions>
         <v-spacer></v-spacer>
-        <v-btn class="blue-grey lighten-4" @click="deleteMeetupDialog = false">Cancel</v-btn>
+        <v-btn color="info" flat="flat" @click="deleteMeetupDialog = false">Cancel</v-btn>
         <v-btn color="info" flat="flat" @click="deleteMeetup(meetup)">Delete</v-btn>
       </v-card-actions>
     </v-card>

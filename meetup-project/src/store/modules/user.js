@@ -19,8 +19,7 @@ export default {
         .then(user => {
           commit("setLoading", false);
           const newUser = {
-            id: user.uid,
-            registeredMeetup: []
+            id: user.uid
           };
           commit("setUser", newUser);
         })
@@ -39,8 +38,7 @@ export default {
         .then(user => {
           commit("setLoading", false);
           const loggedUser = {
-            id: user.uid,
-            registeredMeetup: []
+            id: user.uid
           };
           commit("setUser", loggedUser);
         })
@@ -51,7 +49,7 @@ export default {
         });
     },
     autoSignIn({ commit }, payload) {
-      commit("setUser", { id: payload.uid, registeredMeetup: [] });
+      commit("setUser", { id: payload.uid });
     },
     logOut({ commit }) {
       firebase
