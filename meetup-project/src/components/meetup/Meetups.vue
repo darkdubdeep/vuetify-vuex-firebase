@@ -13,11 +13,11 @@
         <v-icon class="add-meetup-button" @click="createMeetup">add</v-icon>
       </v-flex>
     </v-layout>
-    <v-layout row wrap v-if="!loading && meetups && meetupsChecker">
-      <v-flex xs12 sm6 md6 lg6 offset-lg3 offset-md3 offset-sm3 mt-5>
+    <v-layout row wrap justify-space-around v-if="!loading && meetups && meetupsChecker">
+      <v-flex xs12 sm6 md6 lg6 mt-5 v-for="meetup in meetups" :key="meetup.id" class="meetup-card">
         <v-card class="info">
           <v-container fluid>
-            <v-layout row v-for="meetup in meetups" :key="meetup.id" class="mb-5">
+            <v-layout row class="mb-5">
               <v-flex>
                 <v-card>
                   <v-img class="white--text" height="200px" :src="meetup.imageUrl">
@@ -110,6 +110,12 @@ export default {
 .delete-button {
   float: right;
   margin-top: -2px;
+}
+.flex.lg6, .flex.sm6, .flex.md6 {
+    flex-basis: 49%;
+}
+.flex.xs12 {
+    flex-basis: 100%;
 }
 </style>
 
