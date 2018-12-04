@@ -54,7 +54,7 @@ export default {
   },
   created() {
     console.log(this.meetup.date);
-    this.editableDate = new Date(this.meetup.date).toTimeString();
+    this.editableTime = new Date(this.meetup.date).toLocaleTimeString();
   }
 };
 </script>
