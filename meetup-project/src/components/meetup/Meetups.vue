@@ -111,11 +111,5 @@ export default {
   float: right;
   margin-top: -2px;
 }
-.flex.lg6, .flex.sm6, .flex.md6 {
-    flex-basis: 49%;
-}
-.flex.xs12 {
-    flex-basis: 100%;
-}
 </style>
 
