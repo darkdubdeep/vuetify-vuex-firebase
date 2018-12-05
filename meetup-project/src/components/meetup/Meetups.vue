@@ -13,18 +13,35 @@
         <v-icon class="add-meetup-button" @click="createMeetup">add</v-icon>
       </v-flex>
     </v-layout>
-    <v-layout row wrap justify-space-around v-if="!loading && meetups && meetupsChecker">
-      <v-flex xs12 sm6 md6 lg6 mt-5 v-for="meetup in meetups" :key="meetup.id" class="meetup-card">
+    <v-layout
+      row
+      wrap
+      v-bind:justify-center="meetups.length == 1"
+      v-bind:justify-space-between="meetups.length > 1"
+      v-if="!loading && meetups && meetupsChecker"
+    >
+      <v-flex
+        md6
+        lg6
+        sm12
+        xs12
+        mt-3
+        v-for="meetup in meetups"
+        :key="meetup.id"
+        class="meetup-v-flex-card-holder"
+      >
         <v-card class="info">
           <v-container fluid>
-            <v-layout row class="mb-5">
+            <v-layout row>
               <v-flex>
                 <v-card>
-                  <v-img class="white--text" height="200px" :src="meetup.imageUrl">
+                  <v-img class="white--text" height="230px" :src="meetup.imageUrl">
                     <v-container fill-height fluid>
-                      <v-layout fill-height>
-                        <v-flex xs12 align-end>
-                          <span class="headline">{{meetup.title}}</span>
+                      <v-layout row fill-height>
+                        <v-flex xs10>
+                          <span class="headline meetup-tittle">{{meetup.title}}</span>
+                        </v-flex>
+                        <v-flex xs2>
                           <app-delete-meetup :meetup="meetup"></app-delete-meetup>
                         </v-flex>
                       </v-layout>
@@ -110,6 +127,17 @@ export default {
 .delete-button {
   float: right;
   margin-top: -2px;
+}
+.meetup-v-flex-card-holder {
+  flex-basis: 48.5% !important;
+}
+@media screen and (max-width: 992px) {
+  .meetup-v-flex-card-holder {
+    flex-basis: 100% !important;
+  }
+  .meetup-v-flex-card-holder .meetup-tittle {
+    font-size: 18px !important;
+  }
 }
 </style>
 
