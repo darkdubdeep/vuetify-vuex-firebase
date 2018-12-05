@@ -172,7 +172,6 @@ export default {
     loadedMeetups(state) {
       return state.loadedMeetups.sort((meetupA, meetupB) => {
         return new Date(meetupA.date) - new Date(meetupB.date);
-        // return meetupA.date > meetupB.date;
       });
     },
     featuredMeetups(state, getters) {

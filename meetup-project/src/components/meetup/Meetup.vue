@@ -9,14 +9,14 @@
       <v-flex xs12>
         <v-card>
           <v-layout fill-height row wrap>
-            <v-flex xs12 sm7>
+            <v-flex xs12 sm6>
               <v-img class="white--text meetup-image" height="400px" :src="meetup.imageUrl" xs5>
                 <v-flex align-end flexbox>
                   <span class="headline meetup-title">{{meetup.title}}</span>
                 </v-flex>
               </v-img>
             </v-flex>
-            <v-flex xs12 sm5>
+            <v-flex xs12 sm6>
               <v-card-title>
                 <div>
                   <span class="grey--text">{{meetup.date | date}}</span>
